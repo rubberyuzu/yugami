@@ -11,6 +11,26 @@
     <TextView android:text="" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="19:30"
+        android:id="@+id/start_time"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/imageButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/end_time"
+        android:text="8:30"
+        android:textSize="30dp"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignEnd="@+id/imageButton"
+        android:focusableInTouchMode="false" />
 
     <ImageButton
         android:layout_width="200dp"
@@ -33,22 +53,12 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:src="@drawable/logo_transparent"
-        android:layout_width="240dp"
-        android:layout_height="115dp"
-        android:alpha="0.5"
-        android:id="@+id/imageView"
-        android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/imageButton"
-        android:layout_alignEnd="@+id/imageButton" />
-
-    <ImageView
         android:src="@drawable/explanation_white"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
+        android:layout_width="250dp"
+        android:layout_height="148dp"
         android:id="@+id/imageView2"
-        android:layout_below="@+id/imageView"
+        android:scaleType="fitXY"
+        android:layout_above="@+id/start_time"
         android:layout_centerHorizontal="true" />
 
 

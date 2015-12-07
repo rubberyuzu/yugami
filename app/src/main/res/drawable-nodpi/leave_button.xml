@@ -4,5 +4,5 @@
         android:drawable="@drawable/leave_pressed" /> <!-- pressed -->
     <item android:state_focused="true"
         android:drawable="@drawable/leave_pressed" /> <!-- focused -->
-    <item android:drawable="@drawable/leave_button" /> <!-- default -->
+    <item android:drawable="@drawable/leave_button_image" /> <!-- default -->
 </selector>

@@ -8,4 +8,42 @@
     android:background="#000000"
     tools:context="com.example.rubberyuzu.yugamiapp.Leave">
 
+    <TextView android:text="" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:id="@+id/imageButton"
+        android:src="@drawable/image_button"
+        android:background="#80000000"
+        android:clickable="true"
+        android:hapticFeedbackEnabled="true"
+        android:adjustViewBounds="false"
+        android:baselineAlignBottom="false"
+        android:focusableInTouchMode="false"
+        android:focusable="true"
+        android:cropToPadding="false"
+        android:contextClickable="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:longClickable="true"
+        android:scaleType="fitXY"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:src="@drawable/logo_transparent"
+        android:layout_width="240dp"
+        android:layout_height="115dp"
+        android:alpha="0.5"
+        android:id="@+id/imageView"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/imageButton"
+        android:layout_alignEnd="@+id/imageButton" />
+
+
+
+
 </android.support.design.widget.CoordinatorLayout>

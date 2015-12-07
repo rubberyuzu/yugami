@@ -8,10 +8,17 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.nfc.Tag;
 import android.os.SystemClock;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.RemoteViews;
+import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -35,6 +42,7 @@ public class clock extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         // Enter relevant functionality for when the first widget is created
+//        Typeface myTypeface = Typeface.createFromAsset(context.getResources().getAssets(), "fonts/digital-7.ttf");
     }
 
     @Override
@@ -56,7 +64,7 @@ public class clock extends AppWidgetProvider {
 
             Calendar calendar = Calendar.getInstance(); // Calendar取得
             calendar.setTimeInMillis(System.currentTimeMillis()); // 現在時刻を取得
-            calendar.add(Calendar.SECOND, 100); // 現時刻より5秒後を設定
+            calendar.add(Calendar.SECOND, 1); // 現時刻より5秒後を設定
 
 //        AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE); // AlramManager取得
             AlarmManager am = (AlarmManager)context.getSystemService(context.ALARM_SERVICE); // AlramManager取得
@@ -69,13 +77,26 @@ public class clock extends AppWidgetProvider {
 
 
             Calendar c = Calendar.getInstance();
-            int seconds = c.get(Calendar.SECOND);
-            CharSequence widgetText = String.valueOf(seconds);
+            String widgetText = TimerYugami.loadDisplaytime(c,c,c);
 
             // Construct the RemoteViews object
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.clock);
 
-            views.setTextViewText(R.id.appwidget_text, widgetText);
+//            views.setTextViewText(R.id.appwidget_text, widgetText);
+            Bitmap myBitmap = Bitmap.createBitmap(200, 50, Bitmap.Config.ARGB_4444);
+            Canvas myCanvas = new Canvas(myBitmap);
+            Paint paint = new Paint();
+            Typeface tf = Typeface.createFromAsset(context.getAssets(),"fonts/digital-7.ttf");
+            paint.setAntiAlias(true);
+            paint.setSubpixelText(true);
+            paint.setTypeface(tf);
+            paint.setStyle(Paint.Style.FILL);
+            paint.setColor(Color.GREEN);
+            paint.setTextSize(50);
+            paint.setTextAlign(Paint.Align.CENTER);
+            myCanvas.drawText(widgetText, 100, 40, paint);
+
+            views.setImageViewBitmap(R.id.appwidget_text, myBitmap);
 
             int[] appWidgetIds = AppWidgetManager.getInstance(context).getAppWidgetIds(thisWidget);
 
@@ -94,12 +115,14 @@ public class clock extends AppWidgetProvider {
 
         Calendar c = Calendar.getInstance();
         int seconds = c.get(Calendar.SECOND);
-        CharSequence widgetText = String.valueOf(seconds);
+        CharSequence widgetText = TimerYugami.loadDisplaytime(c,c,c);
+
+
 
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.clock);
 
-        views.setTextViewText(R.id.appwidget_text, widgetText);
+//        views.setTextViewText(R.id.appwidget_text, widgetText);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
